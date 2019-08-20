@@ -15,7 +15,7 @@ public class Apparel extends Artifact {
         List<ArtifactItem> artifactItems = new ArrayList<ArtifactItem>();
 
         for (ApparelItem apparelItem : items) {
-            artifactItems.add((ArtifactItem) apparelItem);
+            artifactItems.add(apparelItem);
         }
         this.items = artifactItems;
     }

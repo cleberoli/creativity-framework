@@ -12,7 +12,6 @@ public class SynergyValue implements Value<Artifact> {
 
     SynergyGraph synergyGraph;
 
-    public SynergyValue() {}
 
     public SynergyValue(SynergyGraph synergyGraph) {
         this.synergyGraph = synergyGraph;

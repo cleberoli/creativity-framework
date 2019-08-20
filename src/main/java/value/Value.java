@@ -2,6 +2,6 @@ package value;
 
 public interface Value<T> {
 
-    public Double getValue(T artifact);
+    Double getValue(T artifact);
 
 }

@@ -10,6 +10,7 @@ import java.util.Map;
 import apparel.model.Color;
 import com.google.gson.Gson;
 
+import data.DataUtils;
 import data.SynergyGraph;
 import model.ArtifactValue;
 import value.SynergyValue;
@@ -17,22 +18,18 @@ import value.SynergyValue;
 
 public class ApparelSynergyValue extends SynergyValue {
 
-    public ApparelSynergyValue(String synergyFileDescription) {
-        super(ApparelSynergyValue.getSynergyGraphFromFile(synergyFileDescription));
+    public ApparelSynergyValue(String synergyFileAbsolutePath) {
+        super(ApparelSynergyValue.getSynergyGraphFromFile(synergyFileAbsolutePath));
     }
 
-    private static SynergyGraph getSynergyGraphFromFile(String synergyFileDescription) {
+    private static SynergyGraph getSynergyGraphFromFile(String synergyFileAbsolutePath) {
         Gson gson = new Gson();
         Map<Color, List<Color>> type = new HashMap<Color, List<Color>>();
-        BufferedReader br = null;
 
-        try {
-             br = new BufferedReader(new FileReader(synergyFileDescription));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        BufferedReader br = DataUtils.getReaderForFile(synergyFileAbsolutePath);
         HashMap<ArtifactValue, List<ArtifactValue>> valueSynergy = (HashMap<ArtifactValue, List<ArtifactValue>>) gson.fromJson(br, type.getClass());
+        DataUtils.closeReader(br);
+
         return SynergyGraph.getInstance(valueSynergy);
     }
 

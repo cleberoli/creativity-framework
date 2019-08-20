@@ -36,4 +36,9 @@ public class Instance {
         this.attributes.addAll(data);
     }
 
+    @Override
+    public String toString() {
+        return attributes.toString();
+    }
+
 }

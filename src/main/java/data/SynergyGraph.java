@@ -16,6 +16,7 @@ public class SynergyGraph {
     Map<ArtifactValue, List<ArtifactValue>> valueSynergy;
     Graph<ArtifactItem, Integer> graph;
 
+
     private static SynergyGraph instance = null;
 
     private SynergyGraph() {}

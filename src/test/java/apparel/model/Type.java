@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import com.sun.deploy.util.ArrayUtil;
 import model.ArtifactFeature;
 
 public class Type extends ArtifactFeature {
@@ -40,4 +39,5 @@ public class Type extends ArtifactFeature {
     public String toString() {
         return feature;
     }
+
 }

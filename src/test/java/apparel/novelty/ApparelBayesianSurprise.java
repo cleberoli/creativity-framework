@@ -4,18 +4,14 @@ import apparel.model.Apparel;
 import apparel.model.ApparelItem;
 import apparel.model.Color;
 import apparel.model.Type;
-import apparel.parser.ApparelParser;
+import apparel.parser.ApparelDatasetParser;
 import com.google.gson.Gson;
+import data.DataUtils;
 import data.Dataset;
-import data.SynergyGraph;
-import model.ArtifactValue;
 import novelty.BayesianSurprise;
-import novelty.Novelty;
 import parser.Parser;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,26 +19,21 @@ import java.util.Map;
 
 public class ApparelBayesianSurprise extends BayesianSurprise {
 
-    public ApparelBayesianSurprise(String datasetFileDescription) {
-        super(ApparelBayesianSurprise.getDatasetFromFile(datasetFileDescription), new ApparelParser(), 0.1);
+    public ApparelBayesianSurprise(String datasetFileAbsolutePath) {
+        super(ApparelBayesianSurprise.getDatasetFromFile(datasetFileAbsolutePath), ApparelDatasetParser.getInstance(), 0.1);
     }
 
-    private static Dataset getDatasetFromFile(String datasetFileDescription) {
+    private static Dataset getDatasetFromFile(String datasetFileAbsolutePath) {
         Gson gson = new Gson();
-        Parser parser = new ApparelParser();
+        Parser parser = ApparelDatasetParser.getInstance();
         List<Map<String, List<ApparelItem>>> type = new ArrayList<Map<String, List<ApparelItem>>>();
-        BufferedReader br = null;
 
-        try {
-            br = new BufferedReader(new FileReader(datasetFileDescription));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        BufferedReader br = DataUtils.getReaderForFile(datasetFileAbsolutePath);
         List<Map<String, List<Map<String, String>>>> existingArtifacts = gson.fromJson(br, type.getClass());
+        DataUtils.closeReader(br);
 
         Integer numberOfAttributes = parser.getNumberOfAttributes();
-        Dataset dataset = new Dataset(numberOfAttributes);
+        Dataset dataset = Dataset.getInstance(numberOfAttributes);
 
         List<ApparelItem> apparelItemList = new ArrayList<ApparelItem>();
 

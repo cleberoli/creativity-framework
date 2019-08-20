@@ -1,0 +1,16 @@
+{
+   "apparelItems":[
+      {
+         "type":"shirt",
+         "color":"blue"
+      },
+      {
+         "type":"pants",
+         "color":"gray"
+      },
+      {
+         "type":"shoes",
+         "color":"white"
+      }
+   ]
+}

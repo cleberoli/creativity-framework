@@ -2,11 +2,21 @@ package apparel.parser;
 
 import parser.DatasetParser;
 
-public class ApparelParser extends DatasetParser {
+public class ApparelDatasetParser extends DatasetParser {
 
-    public ApparelParser() {
+    private static ApparelDatasetParser instance = null;
+
+    private ApparelDatasetParser() {
         super();
         addAttributes();
+    }
+
+    public static synchronized ApparelDatasetParser getInstance() {
+        if (instance == null) {
+            instance = new ApparelDatasetParser();
+        }
+
+        return instance;
     }
 
     private void addAttributes() {

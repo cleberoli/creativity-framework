@@ -1,20 +1,49 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 import org.apache.commons.math3.stat.descriptive.moment.Variance;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Dataset {
 
     List<Instance> instances;
     Integer numberOfAttributes;
 
+    private static Dataset instance = null;
 
-    public Dataset(Integer numberOfAttributes) {
+    private Dataset(){}
+
+    private Dataset(Integer numberOfAttributes) {
         this.instances = new ArrayList<Instance>();
         this.numberOfAttributes = numberOfAttributes;
+    }
+
+    private Dataset(ArrayList<Instance> instances) {
+        this.instances = instances;
+        this.numberOfAttributes = instances.get(0).getAttributes().size();
+    }
+
+    public static synchronized Dataset getInstance() {
+        return instance;
+    }
+
+    public static synchronized Dataset getInstance(Integer numberOfAttributes) {
+        if (instance == null) {
+            instance = new Dataset(numberOfAttributes);
+        }
+
+        return instance;
+    }
+
+    public static synchronized Dataset getInstance(ArrayList<Instance> instances) {
+        if (instance == null) {
+            instance = new Dataset(instances);
+        }
+
+        return instance;
     }
 
     public Integer getNumberOfAttributes() {
@@ -23,11 +52,6 @@ public class Dataset {
 
     public void setNumberOfAttributes(Integer numberOfAttributes) {
         this.numberOfAttributes = numberOfAttributes;
-    }
-
-    public Dataset(ArrayList<Instance> instances) {
-        this.instances = instances;
-        this.numberOfAttributes = instances.get(0).getAttributes().size();
     }
 
     public void addInstance(Instance instance){
@@ -77,4 +101,10 @@ public class Dataset {
 
         return variances;
     }
+
+    @Override
+    public String toString() {
+        return "numberOfInstances= " + instances.size() + "\n" + "instances=" + instances;
+    }
+
 }

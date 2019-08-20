@@ -7,5 +7,7 @@ public interface ArtifactContext<T> {
 
     Novelty<T> getNoveltyModel();
     Value<T> getValueModel();
+    String getArtifactsFolder();
+    String getEvaluatedArtifactsFolder();
 
 }

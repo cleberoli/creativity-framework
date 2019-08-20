@@ -18,8 +18,6 @@ public class BayesianSurprise implements Novelty<Artifact> {
     Double lambda;
 
 
-    public BayesianSurprise(){}
-
     public BayesianSurprise(Dataset dataset, DatasetParser parser, Double lambda) {
         this.dataset = dataset;
         this.parser = parser;
