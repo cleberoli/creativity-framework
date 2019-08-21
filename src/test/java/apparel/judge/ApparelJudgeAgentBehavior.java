@@ -1,10 +1,12 @@
-package apparel.main;
+package apparel.judge;
+
+import jade.core.Agent;
 
 import apparel.model.Apparel;
 import apparel.parser.ApparelArtifactParser;
 import data.DataUtils;
-import jade.core.Agent;
 import judge.JudgeAgentBehavior;
+
 
 public class ApparelJudgeAgentBehavior extends JudgeAgentBehavior {
 

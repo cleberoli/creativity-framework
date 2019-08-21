@@ -1,15 +1,13 @@
 package apparel.value;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import apparel.model.Color;
 import com.google.gson.Gson;
 
+import apparel.model.Color;
 import data.DataUtils;
 import data.SynergyGraph;
 import model.ArtifactValue;

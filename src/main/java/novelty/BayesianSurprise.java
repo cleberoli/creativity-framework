@@ -11,11 +11,11 @@ import data.Instance;
 import model.Artifact;
 
 
-public class BayesianSurprise implements Novelty<Artifact> {
+public class BayesianSurprise implements Novelty {
 
-    Dataset dataset;
-    DatasetParser parser;
-    Double lambda;
+    private Dataset dataset;
+    private DatasetParser parser;
+    private Double lambda;
 
 
     public BayesianSurprise(Dataset dataset, DatasetParser parser, Double lambda) {
@@ -48,14 +48,39 @@ public class BayesianSurprise implements Novelty<Artifact> {
         return 1.0 - Math.exp(-lambda * surprise);
     }
 
-    private double surprise(double data, double variance, double average) {
+    private Double surprise(Double data, Double variance, Double average) {
         if (variance == 0) {
             return 1.0;
         }
 
-        double a = 1.0 / (2 * variance);
-        double b = Math.pow(data - average, 2);
+        Double a = 1.0 / (2 * variance);
+        Double b = Math.pow(data - average, 2);
         return a * (variance + b);
+    }
+
+
+    public Dataset getDataset() {
+        return dataset;
+    }
+
+    public void setDataset(Dataset dataset) {
+        this.dataset = dataset;
+    }
+
+    public DatasetParser getParser() {
+        return parser;
+    }
+
+    public void setParser(DatasetParser parser) {
+        this.parser = parser;
+    }
+
+    public Double getLambda() {
+        return lambda;
+    }
+
+    public void setLambda(Double lambda) {
+        this.lambda = lambda;
     }
 
 }

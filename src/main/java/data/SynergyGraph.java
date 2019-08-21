@@ -13,11 +13,10 @@ import model.ArtifactValue;
 
 public class SynergyGraph {
 
-    Map<ArtifactValue, List<ArtifactValue>> valueSynergy;
-    Graph<ArtifactItem, Integer> graph;
-
-
+    private Map<ArtifactValue, List<ArtifactValue>> valueSynergy;
+    private Graph<ArtifactItem, Integer> graph;
     private static SynergyGraph instance = null;
+
 
     private SynergyGraph() {}
 
@@ -59,6 +58,7 @@ public class SynergyGraph {
     private boolean isSynergic(ArtifactValue uValue, ArtifactValue vValue) {
         return valueSynergy.get(uValue.toString()).contains(vValue.toString());
     }
+
 
     public Map<ArtifactValue, List<ArtifactValue>> getValueSynergy() {
         return valueSynergy;

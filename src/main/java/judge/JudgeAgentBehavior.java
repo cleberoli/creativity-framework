@@ -6,8 +6,9 @@ import jade.core.behaviours.TickerBehaviour;
 
 public abstract class JudgeAgentBehavior extends TickerBehaviour {
 
-    ArtifactJudge judge;
-    Double threshold;
+    private ArtifactJudge judge;
+    private Double threshold;
+
 
     public JudgeAgentBehavior(Agent agent, Long period, ArtifactJudge judge, Double threshold) {
         super(agent, period);
@@ -40,8 +41,21 @@ public abstract class JudgeAgentBehavior extends TickerBehaviour {
 
     public abstract Double evaluateArtifact(String fileName);
 
+
     public ArtifactJudge getJudge() {
         return judge;
+    }
+
+    public void setJudge(ArtifactJudge judge) {
+        this.judge = judge;
+    }
+
+    public Double getThreshold() {
+        return threshold;
+    }
+
+    public void setThreshold(Double threshold) {
+        this.threshold = threshold;
     }
 
 }

@@ -2,6 +2,7 @@ package apparel.model;
 
 import model.ArtifactItem;
 
+
 public class ApparelItem extends ArtifactItem {
 
     public ApparelItem() {

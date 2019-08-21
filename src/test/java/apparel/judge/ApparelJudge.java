@@ -1,4 +1,4 @@
-package apparel.main;
+package apparel.judge;
 
 import main.ArtifactContext;
 import judge.ArtifactJudge;
@@ -6,19 +6,20 @@ import model.Artifact;
 import novelty.Novelty;
 import value.Value;
 
+
 public class ApparelJudge extends ArtifactJudge {
 
-    public ApparelJudge(ArtifactContext<Artifact> context) {
+    public ApparelJudge(ArtifactContext context) {
         super(context);
     }
 
-    public double getNovelty(Artifact artifact) {
-        Novelty<Artifact> noveltyModel = this.getContext().getNoveltyModel();
+    public Double getNovelty(Artifact artifact) {
+        Novelty noveltyModel = this.getContext().getNoveltyModel();
         return noveltyModel.getNovelty(artifact);
     }
 
-    public double getValue(Artifact artifact) {
-        Value<Artifact> valueModel = this.getContext().getValueModel();
+    public Double getValue(Artifact artifact) {
+        Value valueModel = this.getContext().getValueModel();
         return valueModel.getValue(artifact);
     }
 

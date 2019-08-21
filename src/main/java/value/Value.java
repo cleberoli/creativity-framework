@@ -1,7 +1,10 @@
 package value;
 
-public interface Value<T> {
+import model.Artifact;
 
-    Double getValue(T artifact);
+
+public interface Value {
+
+    Double getValue(Artifact artifact);
 
 }

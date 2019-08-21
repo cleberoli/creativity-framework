@@ -6,12 +6,12 @@ import java.util.Random;
 
 import model.ArtifactFeature;
 
+
 public class Type extends ArtifactFeature {
 
     public static final String SHIRT = "shirt";
     public static final String PANTS = "pants";
     public static final String SHOES = "shoes";
-
     private static final List<String> FEATURES = Arrays.asList(Type.SHIRT, Type.PANTS, Type.SHOES);
 
 
@@ -32,7 +32,7 @@ public class Type extends ArtifactFeature {
         return FEATURES.get(random.nextInt(FEATURES.size()));
     }
 
-    public int geNumberRepresentation() {
+    public Integer geNumberRepresentation() {
         return FEATURES.indexOf(feature);
     }
 

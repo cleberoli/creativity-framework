@@ -1,5 +1,11 @@
 package apparel.novelty;
 
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import apparel.model.Apparel;
 import apparel.model.ApparelItem;
 import apparel.model.Color;
@@ -9,13 +15,8 @@ import com.google.gson.Gson;
 import data.DataUtils;
 import data.Dataset;
 import novelty.BayesianSurprise;
-import parser.Parser;
+import parser.DatasetParser;
 
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ApparelBayesianSurprise extends BayesianSurprise {
 
@@ -25,7 +26,7 @@ public class ApparelBayesianSurprise extends BayesianSurprise {
 
     private static Dataset getDatasetFromFile(String datasetFileAbsolutePath) {
         Gson gson = new Gson();
-        Parser parser = ApparelDatasetParser.getInstance();
+        DatasetParser parser = ApparelDatasetParser.getInstance();
         List<Map<String, List<ApparelItem>>> type = new ArrayList<Map<String, List<ApparelItem>>>();
 
         BufferedReader br = DataUtils.getReaderForFile(datasetFileAbsolutePath);

@@ -6,9 +6,9 @@ public class ApparelDatasetParser extends DatasetParser {
 
     private static ApparelDatasetParser instance = null;
 
+
     private ApparelDatasetParser() {
         super();
-        addAttributes();
     }
 
     public static synchronized ApparelDatasetParser getInstance() {
@@ -19,7 +19,7 @@ public class ApparelDatasetParser extends DatasetParser {
         return instance;
     }
 
-    private void addAttributes() {
+    public void addAttributes() {
         Integer index = 0;
         attributes.put("shirt:white", index++);
         attributes.put("shirt:navy", index++);

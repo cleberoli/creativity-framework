@@ -1,10 +1,11 @@
 package apparel.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Artifact;
 import model.ArtifactItem;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Apparel extends Artifact {
 
@@ -23,4 +24,5 @@ public class Apparel extends Artifact {
     public String toString() {
         return this.items.toString();
     }
+
 }

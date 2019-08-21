@@ -8,9 +8,10 @@ import model.ArtifactItem;
 
 import java.util.Collection;
 
-public class SynergyValue implements Value<Artifact> {
 
-    SynergyGraph synergyGraph;
+public class SynergyValue implements Value {
+
+    private SynergyGraph synergyGraph;
 
 
     public SynergyValue(SynergyGraph synergyGraph) {
@@ -48,6 +49,15 @@ public class SynergyValue implements Value<Artifact> {
         }
 
         return (paths) / (1.0 * vertexCount * (vertexCount - 1));
+    }
+
+
+    public SynergyGraph getSynergyGraph() {
+        return synergyGraph;
+    }
+
+    public void setSynergyGraph(SynergyGraph synergyGraph) {
+        this.synergyGraph = synergyGraph;
     }
 
 }

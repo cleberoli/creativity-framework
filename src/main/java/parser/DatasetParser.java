@@ -8,18 +8,19 @@ import model.Artifact;
 import model.ArtifactItem;
 
 
-public class DatasetParser implements Parser<Artifact> {
+public abstract class DatasetParser {
 
     protected Map<String, Integer> attributes;
 
 
     public DatasetParser() {
         this.attributes = new HashMap<String, Integer>();
+        addAttributes();
     }
 
     public Instance getInstance(Artifact artifact) {
         String attributeName;
-        double[] dataInstance = new double[attributes.size()];
+        Double[] dataInstance = new Double[attributes.size()];
 
         for (ArtifactItem item : artifact.getItems()) {
             attributeName = (item.getFeature() + ":" + item.getValue()).toLowerCase();
@@ -31,6 +32,17 @@ public class DatasetParser implements Parser<Artifact> {
 
     public Integer getNumberOfAttributes(){
         return attributes.size();
+    }
+
+    public abstract void addAttributes();
+
+
+    public Map<String, Integer> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<String, Integer> attributes) {
+        this.attributes = attributes;
     }
 
 }

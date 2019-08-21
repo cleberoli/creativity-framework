@@ -9,10 +9,10 @@ import org.apache.commons.math3.stat.descriptive.moment.Variance;
 
 public class Dataset {
 
-    List<Instance> instances;
-    Integer numberOfAttributes;
-
+    private List<Instance> instances;
+    private Integer numberOfAttributes;
     private static Dataset instance = null;
+
 
     private Dataset(){}
 
@@ -46,24 +46,8 @@ public class Dataset {
         return instance;
     }
 
-    public Integer getNumberOfAttributes() {
-        return numberOfAttributes;
-    }
-
-    public void setNumberOfAttributes(Integer numberOfAttributes) {
-        this.numberOfAttributes = numberOfAttributes;
-    }
-
     public void addInstance(Instance instance){
         instances.add(instance);
-    }
-
-    public List<Instance> getInstances() {
-        return instances;
-    }
-
-    public void setInstances(ArrayList<Instance> instances) {
-        this.instances = instances;
     }
 
     public List<Mean> getMeans() {
@@ -105,6 +89,23 @@ public class Dataset {
     @Override
     public String toString() {
         return "numberOfInstances= " + instances.size() + "\n" + "instances=" + instances;
+    }
+
+
+    public List<Instance> getInstances() {
+        return instances;
+    }
+
+    public void setInstances(ArrayList<Instance> instances) {
+        this.instances = instances;
+    }
+
+    public Integer getNumberOfAttributes() {
+        return numberOfAttributes;
+    }
+
+    public void setNumberOfAttributes(Integer numberOfAttributes) {
+        this.numberOfAttributes = numberOfAttributes;
     }
 
 }

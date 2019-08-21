@@ -1,19 +1,17 @@
 package apparel.parser;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+
 import apparel.model.Apparel;
 import apparel.model.ApparelItem;
 import apparel.model.Color;
 import apparel.model.Type;
-import com.google.gson.Gson;
-
 import data.DataUtils;
 import main.ArtifactContext;
 import model.Artifact;
@@ -24,11 +22,12 @@ public class ApparelArtifactParser extends ArtifactParser {
 
     private static ApparelArtifactParser instance = null;
 
-    private ApparelArtifactParser(ArtifactContext<Artifact> context) {
+
+    private ApparelArtifactParser(ArtifactContext context) {
         super(context);
     }
 
-    public static synchronized ApparelArtifactParser getInstance(ArtifactContext<Artifact> context) {
+    public static synchronized ApparelArtifactParser getInstance(ArtifactContext context) {
         if (instance == null) {
             instance = new ApparelArtifactParser(context);
         }

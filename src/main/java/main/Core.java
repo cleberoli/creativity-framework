@@ -1,6 +1,6 @@
 package main;
 
-import data.DatasetAgent;
+
 import jade.Boot;
 import jade.core.Agent;
 import jade.core.Profile;
@@ -10,28 +10,39 @@ import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
 
+import data.DatasetAgent;
 import judge.ArtifactJudge;
-import model.Artifact;
+import judge.JudgeAgent;
 import parser.ArtifactParser;
 import parser.DatasetParser;
 
+
 public class Core {
 
-    ArtifactContext<Artifact> context;
-    DatasetParser datasetParser;
-    ArtifactParser artifactParser;
-    ArtifactJudge artifactJudge;
-    DatasetAgent datasetAgent;
-    Agent judgeAgent;
+    private ArtifactContext context;
+    private DatasetParser datasetParser;
+    private ArtifactParser artifactParser;
+    private ArtifactJudge artifactJudge;
+    private DatasetAgent datasetAgent;
+    private JudgeAgent judgeAgent;
 
-    public Core(ArtifactContext<Artifact> context, DatasetParser datasetParser, ArtifactParser artifactParser,
-                ArtifactJudge artifactJudge, DatasetAgent datasetAgent, Agent judgeAgent) {
+
+    public Core(ArtifactContext context, DatasetParser datasetParser, ArtifactParser artifactParser,
+                ArtifactJudge artifactJudge, DatasetAgent datasetAgent, JudgeAgent judgeAgent) {
         this.context = context;
         this.datasetParser = datasetParser;
         this.artifactParser = artifactParser;
         this.artifactJudge = artifactJudge;
         this.datasetAgent = datasetAgent;
         this.judgeAgent = judgeAgent;
+    }
+
+    public void run() {
+        System.out.println("Creativity Framework");
+        Boot.main(new String[]{""});
+
+        setAgentInContainer(datasetAgent, "DatasetAgent", "CreativityFramework");
+        setAgentInContainer(judgeAgent, "JudgeAgent", "CreativityFramework");
     }
 
     private void setAgentInContainer(Agent agent, String agentName, String containerName){
@@ -50,12 +61,53 @@ public class Core {
         }
     }
 
-    public void run() {
-        System.out.println("Creativity Framework");
-        Boot.main(new String[]{""});
 
-        setAgentInContainer(datasetAgent, "DatasetAgent", "CreativityFramework");
-        setAgentInContainer(judgeAgent, "JudgeAgent", "CreativityFramework");
+    public ArtifactContext getContext() {
+        return context;
+    }
+
+    public void setContext(ArtifactContext context) {
+        this.context = context;
+    }
+
+    public DatasetParser getDatasetParser() {
+        return datasetParser;
+    }
+
+    public void setDatasetParser(DatasetParser datasetParser) {
+        this.datasetParser = datasetParser;
+    }
+
+    public ArtifactParser getArtifactParser() {
+        return artifactParser;
+    }
+
+    public void setArtifactParser(ArtifactParser artifactParser) {
+        this.artifactParser = artifactParser;
+    }
+
+    public ArtifactJudge getArtifactJudge() {
+        return artifactJudge;
+    }
+
+    public void setArtifactJudge(ArtifactJudge artifactJudge) {
+        this.artifactJudge = artifactJudge;
+    }
+
+    public DatasetAgent getDatasetAgent() {
+        return datasetAgent;
+    }
+
+    public void setDatasetAgent(DatasetAgent datasetAgent) {
+        this.datasetAgent = datasetAgent;
+    }
+
+    public JudgeAgent getJudgeAgent() {
+        return judgeAgent;
+    }
+
+    public void setJudgeAgent(JudgeAgent judgeAgent) {
+        this.judgeAgent = judgeAgent;
     }
 
 }

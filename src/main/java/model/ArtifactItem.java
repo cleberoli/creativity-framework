@@ -23,4 +23,5 @@ public abstract class ArtifactItem {
     public void setValue(ArtifactValue value) {
         this.value = value;
     }
+
 }

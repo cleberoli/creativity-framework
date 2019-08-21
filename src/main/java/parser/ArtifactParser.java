@@ -7,9 +7,10 @@ import model.Artifact;
 
 public abstract class ArtifactParser {
 
-    ArtifactContext<Artifact> context;
+    private ArtifactContext context;
 
-    public ArtifactParser(ArtifactContext<Artifact> context) {
+
+    public ArtifactParser(ArtifactContext context) {
         this.context = context;
     }
 
@@ -18,5 +19,14 @@ public abstract class ArtifactParser {
     }
 
     public abstract Artifact parseArtifactFromFile(String artifactFileAbsolutePath);
+
+
+    public ArtifactContext getContext() {
+        return context;
+    }
+
+    public void setContext(ArtifactContext context) {
+        this.context = context;
+    }
 
 }

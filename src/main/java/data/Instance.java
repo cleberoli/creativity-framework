@@ -3,9 +3,10 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Instance {
 
-    List<Double> attributes;
+    private List<Double> attributes;
 
 
     public Instance() {
@@ -16,16 +17,12 @@ public class Instance {
         this.attributes = instanceData;
     }
 
-    public Instance(double[] instanceData) {
+    public Instance(Double[] instanceData) {
         this.attributes = new ArrayList<Double>();
 
         for (Double data : instanceData) {
             attributes.add(data);
         }
-    }
-
-    public List<Double> getAttributes() {
-        return attributes;
     }
 
     public void addAttribute(Double data) {
@@ -39,6 +36,15 @@ public class Instance {
     @Override
     public String toString() {
         return attributes.toString();
+    }
+
+
+    public List<Double> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<Double> attributes) {
+        this.attributes = attributes;
     }
 
 }

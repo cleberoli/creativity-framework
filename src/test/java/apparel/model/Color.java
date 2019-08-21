@@ -6,6 +6,7 @@ import java.util.Random;
 
 import model.ArtifactValue;
 
+
 public class Color extends ArtifactValue {
 
     public static final String WHITE = "white";
@@ -15,7 +16,6 @@ public class Color extends ArtifactValue {
     public static final String GRAY = "gray";
     public static final String BROWN = "brown";
     public static final String LILAC = "lilac";
-
     private static final List<String> VALUES = Arrays.asList(Color.WHITE, Color.BLACK, Color.NAVY, Color.BLUE,
             Color.GRAY, Color.BROWN, Color.LILAC);
 
@@ -37,11 +37,12 @@ public class Color extends ArtifactValue {
         return VALUES.get(random.nextInt(VALUES.size()));
     }
 
-    public int geNumberRepresentation() {
+    public Integer geNumberRepresentation() {
         return VALUES.indexOf(value);
     }
 
     public String toString() {
         return value;
     }
+
 }

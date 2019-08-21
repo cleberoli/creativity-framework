@@ -11,12 +11,13 @@ import parser.DatasetParser;
 
 public class DatasetAgentBehavior extends TickerBehaviour {
 
-    DatasetParser datasetParser;
-    ArtifactParser artifactParser;
-    ArtifactContext<Artifact> context;
+    private DatasetParser datasetParser;
+    private ArtifactParser artifactParser;
+    private ArtifactContext context;
+
 
     public DatasetAgentBehavior(Agent agent, Long period, DatasetParser datasetParser,
-                                ArtifactParser artifactParser, ArtifactContext<Artifact> context) {
+                                ArtifactParser artifactParser, ArtifactContext context) {
         super(agent, period);
         this.datasetParser = datasetParser;
         this.artifactParser = artifactParser;
@@ -37,6 +38,31 @@ public class DatasetAgentBehavior extends TickerBehaviour {
             Dataset.getInstance().addInstance(datasetParser.getInstance(artifact));
             DataUtils.moveFile(simpleFileName, updateFolder, destinyFolder);
         }
+    }
+
+
+    public DatasetParser getDatasetParser() {
+        return datasetParser;
+    }
+
+    public void setDatasetParser(DatasetParser datasetParser) {
+        this.datasetParser = datasetParser;
+    }
+
+    public ArtifactParser getArtifactParser() {
+        return artifactParser;
+    }
+
+    public void setArtifactParser(ArtifactParser artifactParser) {
+        this.artifactParser = artifactParser;
+    }
+
+    public ArtifactContext getContext() {
+        return context;
+    }
+
+    public void setContext(ArtifactContext context) {
+        this.context = context;
     }
 
 }

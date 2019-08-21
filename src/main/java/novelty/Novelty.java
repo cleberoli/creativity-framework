@@ -1,7 +1,10 @@
 package novelty;
 
-public interface Novelty<T> {
+import model.Artifact;
 
-    Double getNovelty(T artifact);
+
+public interface Novelty {
+
+    Double getNovelty(Artifact artifact);
 
 }

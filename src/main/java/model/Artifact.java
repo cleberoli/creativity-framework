@@ -9,6 +9,7 @@ public abstract class Artifact {
 
     public abstract String toString();
 
+
     public List<ArtifactItem> getItems() {
         return items;
     }
@@ -16,4 +17,5 @@ public abstract class Artifact {
     public void setItems(List<ArtifactItem> items) {
         this.items = items;
     }
+
 }
