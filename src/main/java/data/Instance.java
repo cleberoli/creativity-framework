@@ -25,6 +25,14 @@ public class Instance {
         }
     }
 
+    public Instance(double[] instanceData) {
+        this.attributes = new ArrayList<Double>();
+
+        for (double data : instanceData) {
+            attributes.add(data);
+        }
+    }
+
     public void addAttribute(Double data) {
         this.attributes.add(data);
     }

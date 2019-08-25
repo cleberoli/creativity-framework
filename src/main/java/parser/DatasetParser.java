@@ -20,7 +20,7 @@ public abstract class DatasetParser {
 
     public Instance getInstance(Artifact artifact) {
         String attributeName;
-        Double[] dataInstance = new Double[attributes.size()];
+        double[] dataInstance = new double[attributes.size()];
 
         for (ArtifactItem item : artifact.getItems()) {
             attributeName = (item.getFeature() + ":" + item.getValue()).toLowerCase();
